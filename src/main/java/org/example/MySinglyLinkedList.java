@@ -101,13 +101,17 @@ public class MySinglyLinkedList<T> {
 
 
         Node<T> copy = head;
-        while(head != tail) {
-            copy = head;
-            head = head.next;
+        Node<T> prev = null;
+        while(copy != tail) {
+            prev = copy;
+            copy = copy.next;
         }
 
         T ret = tail.t;
-        copy.next = null;
+        prev.next = null;
+        tail = prev;
+
+        size--;
 
         return ret;
     }
